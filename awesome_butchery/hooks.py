@@ -25,8 +25,8 @@ app_license = "mit"
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/awesome_butchery/css/awesome_butchery.css"
-# app_include_js = "/assets/awesome_butchery/js/awesome_butchery.js"
+app_include_css = "/assets/awesome_butchery/css/pos_quick_qty.css"
+app_include_js = "/assets/awesome_butchery/js/pos_quick_qty.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/awesome_butchery/css/awesome_butchery.css"

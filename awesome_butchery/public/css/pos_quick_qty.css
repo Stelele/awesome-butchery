@@ -1,0 +1,25 @@
+.qty-dialog-numpad-wrapper .numpad-container {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: var(--margin-md);
+	margin-bottom: var(--margin-md);
+	margin-top: var(--margin-md);
+	background-color: var(--fg-color);
+	border-radius: var(--border-radius-md);
+	padding: var(--padding-sm);
+}
+
+.qty-dialog-numpad-wrapper .numpad-container .numpad-btn {
+	cursor: pointer;
+	user-select: none;
+	border-radius: var(--border-radius-md);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: var(--padding-md);
+	box-shadow: var(--shadow-base);
+}
+
+.qty-dialog-numpad-wrapper .numpad-container .numpad-btn:hover {
+	background-color: var(--control-bg);
+}
