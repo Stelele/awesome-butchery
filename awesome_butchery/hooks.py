@@ -88,11 +88,15 @@ app_include_js = "/assets/awesome_butchery/js/pos_quick_qty.js"
 # before_install = "awesome_butchery.install.before_install"
 # after_install = "awesome_butchery.install.after_install"
 
+# Fixtures
+# --------
+fixtures = [
+	{"dt": "Custom Field", "filters": [["fieldname", "=", "show_quantity_dialog"]]},
+]
+
 # Migration
 # ---------
-after_migrate = [
-	"awesome_butchery.patches.after_migrate.execute",
-]
+after_migrate = "awesome_butchery.migrate.after_migrate"
 
 # Uninstallation
 # ------------

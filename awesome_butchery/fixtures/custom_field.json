@@ -1,0 +1,18 @@
+[
+	{
+		"doctype": "Custom Field",
+		"name": "POS Profile-show_quantity_dialog",
+		"dt": "POS Profile",
+		"fieldname": "show_quantity_dialog",
+		"fieldtype": "Check",
+		"label": "Quick Quantity Dialog",
+		"default": "0",
+		"insert_after": "auto_add_item_to_cart",
+		"description": "When checked, clicking an item in the POS opens a quantity dialog instead of auto-adding qty=1",
+		"translatable": 1,
+		"permlevel": 0,
+		"module": "Awesome Butchery",
+		"is_system_generated": 1,
+		"hidden": 0
+	}
+]
