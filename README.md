@@ -57,7 +57,7 @@ bench build
 
 1. **Enable the feature** — open any POS Profile and check the **Quick Quantity Dialog** checkbox.
 2. **Custom field created** — the app adds a `Quick Quantity Dialog` field (Check type) to the POS Profile doctype. This field is inserted after `auto_add_item_to_cart`.
-3. **Cache clear** — after migration or profile save, the POS JavaScript is reloaded automatically. If it isn't, run `bench --site <site_name> clear-cache`; `frappe.clear_cache(doctype="POS Profile")` is Python code and must be run inside `bench --site <site_name> console`.
+3. **Cache clear** — after migration, run `bench --site <site_name> clear-cache` if the custom field does not appear; `frappe.clear_cache(doctype="POS Profile")` is Python code and must be run inside `bench --site <site_name> console`. After saving a POS Profile, **reload or reopen the POS screen** — the setting is read when the POS opens, and an already-open POS does not pick it up.
 
 > The custom field `show_quantity_dialog` is defined in `awesome_butchery/migrate.py` and `awesome_butchery/fixtures/custom_field.json`. It appears on the POS Profile form and controls whether clicking an item in the POS opens a quantity dialog instead of auto-adding qty=1.
 
@@ -89,7 +89,7 @@ When "Quick Quantity Dialog" is enabled on a POS Profile:
 1. Navigate to **Point of Sale > Setup > POS Profile**
 2. Edit or create a POS Profile
 3. Check **Quick Quantity Dialog**
-4. Save — the change takes effect immediately on the POS screen
+4. Save — then **reload/reopen the POS screen**; the change takes effect on the next POS session (not on a POS that is already open)
 
 ---
 
@@ -104,7 +104,7 @@ The app configures one custom field:
 **Field details:**
 - `insert_after`: `auto_add_item_to_cart`
 - The full attribute set — `translatable`, `permlevel`, `module`, `is_system_generated`, `hidden` — is defined in `awesome_butchery/fixtures/custom_field.json`
-- `migrate.py` sets only `translatable`; the remaining attributes come from the fixture
+- `migrate.py` `after_migrate()` passes `fieldname`, `fieldtype`, `label`, `default`, `insert_after`, `description`, and `translatable`; the fixture additionally supplies `doctype`, `name`, `dt`, `permlevel`, `module`, `is_system_generated`, and `hidden`
 
 No other configuration settings are required. The feature is purely toggle-driven via the POS Profile checkbox.
 

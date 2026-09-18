@@ -82,7 +82,7 @@ To revert to the default behavior (auto-add qty=1):
 3. **Uncheck** **Quick Quantity Dialog**.
 4. **Save**.
 
-The change takes effect on the next dialog open — an already-open quantity dialog is not force-closed. From the next item click onward, items auto-add qty=1 again.
+The change takes effect after the POS screen is **reloaded or reopened** — the profile setting is read when the POS opens, so an already-open POS keeps the previous behavior until refreshed.
 
 ---
 

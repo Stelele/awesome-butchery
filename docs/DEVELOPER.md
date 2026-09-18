@@ -54,7 +54,7 @@ All hooks declared in `awesome_butchery/hooks.py`:
 | `app_license` | `mit` | License type |
 | `app_include_css` | `/assets/awesome_butchery/css/pos_quick_qty.css` | CSS included in desk header |
 | `app_include_js` | `/assets/awesome_butchery/js/pos_quick_qty.js` | JS included in desk header |
-| `fixtures` | `[{"dt": "Custom Field", "filters": [["fieldname", "=", "show_quantity_dialog"]]}]` | App fixture: Custom Field for `show_quantity_dialog` |
+| `fixtures` | `[{"dt": "Custom Field", "filters": [["fieldname", "=", "show_quantity_dialog"]]}]` | Fixture export selector: syncs the `show_quantity_dialog` Custom Field record (via `dt` + filters) from `fixtures/custom_field.json` |
 | `after_migrate` | `awesome_butchery.migrate.after_migrate` | Runs after `bench migrate`; creates custom field + clears cache |
 
 > **Note**: This app does **not** define any `doc_events`, `scheduler_events`, `permission_query_conditions`, `auth_hooks`, or `override_whitelisted_methods`.
@@ -114,7 +114,7 @@ File: `awesome_butchery/fixtures/custom_field.json`
 ]
 ```
 
-This fixture is also replicated in `hooks.py` fixtures list (line 93-95) for sync consistency. Note: the fixture is the source of truth for the full attribute set (`translatable`, `permlevel`, `module`, `is_system_generated`, `hidden`); `migrate.py` `after_migrate()` sets only `translatable`.
+The `hooks.py` fixtures entry (line 93-95) is **not a duplicate of this JSON** — it is an export selector that tells Frappe's fixture sync which Custom Field records to export/import, targeting this record via `dt` (`"Custom Field"`) plus the filter on `fieldname`. `awesome_butchery/fixtures/custom_field.json` is the source of truth for the field's attributes on install: `fieldname`, `fieldtype`, `label`, `default`, `insert_after`, `description`, and `translatable` are also passed by `migrate.py` `after_migrate()`; `doctype`, `name`, `dt`, `permlevel`, `module`, `is_system_generated`, and `hidden` come from the fixture alone.
 
 ### Related DocTypes
 
