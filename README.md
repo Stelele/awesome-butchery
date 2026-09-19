@@ -22,6 +22,12 @@
 
 ---
 
+### Screenshots
+
+The Quick Quantity numpad dialog (enabled per POS Profile):
+
+![Quick Quantity dialog](docs/images/quantity-dialog.png)
+
 ## Installation
 
 ### Via Bench CLI
